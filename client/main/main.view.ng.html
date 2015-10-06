@@ -1,0 +1,14 @@
+<div class="main" layout="row">
+    <span flex=""></span>
+    <div>
+
+        <h3 class="md-headline">Partager simplement vos ressources multi-média ! </h3>
+        <span ng-show="currentUser.isActif==false">
+        Bonjour {{currentUser.username}}, votre compte n'est pas encore activé.
+        </span>
+        <span ng-hide="currentUser">
+        <md-button class="md-warn" ng-href="/login">Vous devez vous authentifier ! </md-button> 
+          </span>
+    </div>
+    <span flex=""></span>
+</div>

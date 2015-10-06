@@ -1,0 +1,29 @@
+<div class="demandes-list" layout="row">
+    <span flex=""></span>
+    <div layout="column">
+        <h1>Demandes</h1>
+
+        <div layout="row" layout-padding="">
+            <md-input-container flex="65">
+                <label>Search</label>
+                <input type="Search" ng-model="search" placeholder="Search">
+            </md-input-container>
+            <md-select ng-model="orderProperty" flex="35">
+                <md-option value="1">Ascending</md-option>
+                <md-option value="-1">Descending</md-option>
+            </md-select>
+        </div>
+
+        <ul>
+            <li dir-paginate="demande in demandes | itemsPerPage: perPage" total-items="demandesCount.count" current-page='page'>
+                <p><a href="/demandes/{{demande._id}}">{{ demande.username }}</a>
+                    <button ng-click="remove(demande)">&times;</button>
+                </p>
+            </li>
+        </ul>
+        <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+
+        <p>Total number of demandes: {{demandesCount.count}}</p>
+    </div>
+    <span flex=""></span>
+</div>

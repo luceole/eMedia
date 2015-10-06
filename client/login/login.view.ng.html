@@ -1,0 +1,32 @@
+<md-content layout="row">
+    <span flex></span>
+    <md-whiteframe layout="column" flex="50">
+        <div layout="row" layout-align="space-around center">
+            <div>Se connecter avec :</div>
+            <md-button ng-disabled="true"> Twitter</md-button>
+            <md-button ng-disabled="true">Google</md-button>
+        </div>
+        <div ng-show="lc.error" class="md-warn">
+            <small>{{ lc.error }}</small>
+        </div>
+        <form layout="column">
+            <md-input-container>
+                <md-icon md-font-library="material-icons">face</md-icon>
+                <input type="text" ng-model="lc.credentials.username" placeholder="Nom d'utilisateur" aria-label="nom d'utilisateur" />
+            </md-input-container>
+            <md-input-container>
+                <md-icon md-font-library="material-icons">lock</md-icon>
+                <input type="password" ng-model="lc.credentials.password" placeholder="Mot de passe" aria-label="Mot de passe" />
+            </md-input-container>
+            <md-button class="md-raised md-primary" ng-click="lc.login()" aria-label="login">Connexion
+            </md-button>
+            <span flex> </span>
+        </form>
+        <div layout="row" layout-align="space-around center" ng-hide="false">
+            <md-button class="md-raised md-primary  md-hue-1" ng-href="/resetpwd" aria-label="reset password">
+                Mot de passe oublié ?
+            </md-button>
+        </div>
+    </md-whiteframe>
+    <span flex></span>
+</md-content>

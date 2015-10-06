@@ -1,0 +1,32 @@
+<md-content layout="row">
+    <span flex></span>
+    <md-whiteframe layout="column" flex="50">
+        <div layout="row" layout-align="space-around center">
+            <div>Enregistrement</div>
+            <md-button>Twitter</md-button>
+            <md-button>Facebook</md-button>
+        </div>
+        <div ng-show="rc.error" class="md-warn">
+            <small>{{ rc.error }}</small>
+        </div>
+        <form layout="column">
+            <md-input-container>
+                <md-icon md-font-library="material-icons">face</md-icon>
+                <input type="text" ng-model="rc.credentials.username" placeholder="nom d'utilisateur" aria-label="nom d'utilisateur" />
+            </md-input-container>
+            <md-input-container>
+                <md-icon md-font-library="material-icons">mail</md-icon>
+                <input type="text" ng-model="rc.credentials.email" placeholder="Courriel" aria-label="Courriel" />
+            </md-input-container>
+            <md-input-container>
+                <md-icon md-font-library="material-icons">lock</md-icon>
+                <input type="password" ng-model="rc.credentials.password" placeholder="Mot de passe" aria-label="Mot de passe" />
+            </md-input-container>
+            <md-button class="md-raised md-primary" ng-click="rc.register()">Créer votre compte
+            </md-button>
+        </form>
+        <div layout="row" layout-align="end center">
+        </div>
+    </md-whiteframe>
+    <span flex></span>
+</md-content>
