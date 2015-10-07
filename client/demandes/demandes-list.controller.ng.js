@@ -3,19 +3,21 @@
 angular.module('eMediaApp')
     .controller('DemandesListCtrl', function ($scope, $meteor) {
         $scope.page = 1
-        $scope.perPage = 3
+        $scope.perPage = 10
+        $scope.orderProperty = "1"
         $scope.sort = {
-            name_sort: 1
-        };
-        $scope.orderProperty = '1'
-        $scope.$meteorSubscribe('demandes');
+            username: 1
+        }
         $scope.demandes = $scope.$meteorCollection(function () {
-            return Meteor.users.find({}, {
+            return Meteor.users.find({
+                isActif: false
+            }, {
                 sort: $scope.getReactively('sort')
             });
         });
 
         $meteor.autorun($scope, function () {
+            console.log($scope.sort)
             $scope.$meteorSubscribe('demandes', {
                 limit: parseInt($scope.getReactively('perPage')),
                 skip: parseInt(($scope.getReactively('page') - 1) * $scope.getReactively('perPage')),
@@ -27,15 +29,16 @@ angular.module('eMediaApp')
 
         $meteor.session('demandesCounter').bind($scope, 'page');
 
-        $scope.save = function () {
-            if ($scope.form.$valid) {
-                $scope.demandes.save($scope.newDemande);
-                $scope.newDemande = undefined;
-            }
+        $scope.active = function (demande) {
+            Meteor.call('activeUser', demande, function (error, result) {
+                if (error) alert(error)
+            });
         };
 
         $scope.remove = function (demande) {
-            $scope.demandes.remove(demande);
+            var r = confirm("Supprimer cette demande");
+            if (r)
+                $scope.demandes.remove(demande);
         };
 
         $scope.pageChanged = function (newPage) {
@@ -45,7 +48,7 @@ angular.module('eMediaApp')
         $scope.$watch('orderProperty', function () {
             if ($scope.orderProperty) {
                 $scope.sort = {
-                    name_sort: parseInt($scope.orderProperty)
+                    username: parseInt($scope.orderProperty)
                 };
             }
         });

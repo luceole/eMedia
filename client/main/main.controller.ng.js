@@ -1,9 +1,9 @@
 'use strict'
 
 angular.module('eMediaApp')
-    .controller('MainCtrl', function ($scope, $meteor) {
+    .controller('MainCtrl', function ($scope, $rootScope, $meteor) {
         Meteor.subscribe("userData");
-
+        $rootScope.isAdmin = Roles.userIsInRole($rootScope.currentUser, ["admin", "manage-users"], 'default-group');
         /*      accounts.ui.setLanguage('fr');
 
               Accounts.ui.config({

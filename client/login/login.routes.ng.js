@@ -14,7 +14,8 @@ angular.module('eMediaApp')
                 resolve: {
                     "logout": ['$meteor', '$state', function ($meteor, $state) {
                         return $meteor.logout().then(function () {
-                            $state.go('main');
+
+                            $state.go('login');
                         }, function (err) {
                             console.log('logout error - ', err);
                         });

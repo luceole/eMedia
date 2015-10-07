@@ -1,5 +1,6 @@
 <md-toolbar class="toolbar" layout="row" layout-align="start center" layout-padding="">
     <div class="navbar-left" layout="row" layout-align="center center">
+        <a href="/">eMedia</a>
         <md-button ng-hide="currentUser" ng-href="/login">
             SE CONNECTER
         </md-button>
@@ -8,16 +9,17 @@
         </md-button>
 
 
-        <md-button ng-href="/logout" ng-show="currentUser">SE DECONNECTER</md-button>
         <span ng-show="$root.currentUser.isActif">
     <md-button ng-href="/about">About</md-button>
-    <md-button ng-href="/demandes">Demandes</md-button>
+    <md-button ng-show="$root.isAdmin" ng-href="/demandes">Demandes</md-button>
     <md-button ng-href="/ressources">Ressources</md-button>
     </span>
 
     </div>
     <span flex=''> </span>
     <navbar-right>
-        <a href="/">appApp</a>
+        <md-button ng-href="/logout" ng-show="currentUser">{{currentUser.username}}
+            <md-icon md-font-library="material-icons">exit_to_app</md-icon>
+        </md-button>
     </navbar-right>
 </md-toolbar>

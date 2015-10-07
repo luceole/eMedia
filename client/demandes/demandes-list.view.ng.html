@@ -16,8 +16,15 @@
 
         <ul>
             <li dir-paginate="demande in demandes | itemsPerPage: perPage" total-items="demandesCount.count" current-page='page'>
-                <p><a href="/demandes/{{demande._id}}">{{ demande.username }}</a>
-                    <button ng-click="remove(demande)">&times;</button>
+                <p>{{ demande.username }} Nom: {{demande.profile.first_name}} {{demande.profile.last_name}} Courriel : {{demande.emails[0].address}}
+                    <md-button ng-click="active(demande)">
+                        <md-icon md-font-library="material-icons">check circle</md-icon>
+                        <md-tooltip md-delay="1200">Valider cette inscription</md-tooltip>
+                    </md-button>
+                    <md-button ng-click="remove(demande)">
+                        <md-icon md-font-library="material-icons">delete </md-icon>
+                        <md-tooltip md-delay="1200">Effacer cette demande </md-tooltip>
+                    </md-button>
                 </p>
             </li>
         </ul>

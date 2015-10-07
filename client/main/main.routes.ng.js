@@ -1,11 +1,16 @@
 'use strict'
 
 angular.module('eMediaApp')
-.config(function($stateProvider) {
-  $stateProvider
-  .state('main', {
-    url: '/',
-    templateUrl: 'client/main/main.view.ng.html',
-    controller: 'MainCtrl'
-  });
-});
+    .config(function ($stateProvider) {
+        $stateProvider
+            .state('main', {
+                url: '/',
+                templateUrl: 'client/main/main.view.ng.html',
+                controller: 'MainCtrl',
+                resolve: {
+                    "currentUser": ["$meteor", function ($meteor) {
+                        return $meteor.waitForUser();
+      }]
+                }
+            });
+    });

@@ -9,8 +9,10 @@ angular.module('eMediaApp')
                 controller: 'DemandesListCtrl',
                 resolve: {
                     currentUser: ['$meteor', function ($meteor) {
-                        return $meteor.requireUser();
-      }]
+                        return $meteor.requireValidUser(function (user) {
+                            return Roles.userIsInRole(user, ["admin", "manage-users"], 'default-group');
+                        });
+                                }]
                 }
             });
     });

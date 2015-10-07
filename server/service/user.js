@@ -28,8 +28,8 @@ Meteor.publish('demandes', function (options, searchString) {
         'username': {
             '$regex': '.*' + (searchString || '') + '.*',
             '$options': 'i'
-        }
-        // , 'isActif': false
+        },
+        'isActif': false
     };
     Counts.publish(this, 'numberOfDemandes', Meteor.users.find(where), {
         noReady: true
