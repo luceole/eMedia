@@ -40,4 +40,64 @@ if (!user) {
     });
     Roles.addUsersToRoles(id, ['member'], "default-group");
     Roles.removeUsersFromRoles(id, ['invite'], "default-group");
+
+
+    var demandes = [
+        {
+            'username': 'test1',
+            email: 'test1@admin.lan',
+            password: 'test21',
+            profile: {
+                first_name: 'Alfred',
+                last_name: 'Test1'
+            }
+      },
+        {
+            'username': 'test2',
+            email: 'test2@admin.lan',
+            password: 'test21',
+            profile: {
+                first_name: 'Arthur',
+                last_name: 'Test2'
+            }
+        },
+        {
+            'username': 'test3',
+            email: 'test3@admin.lan',
+            password: 'test21',
+            profile: {
+                first_name: 'William',
+                last_name: 'Test3'
+            }
+        },
+        {
+            'username': 'test5',
+            email: 'test5@admin.lan',
+            password: 'test21',
+            profile: {
+                first_name: 'Bérénice',
+                last_name: 'Test5'
+            }
+            },
+        {
+            'username': 'test4',
+            email: 'test4@admin.lan',
+            password: 'test21',
+            profile: {
+                first_name: 'Renée',
+                last_name: 'Test4'
+            }
+            },
+        {
+            'username': 'test6',
+            email: 'test6@admin.lan',
+            password: 'test21',
+            profile: {
+                first_name: 'Igor',
+                last_name: 'Test6'
+            }
+            }];
+    demandes.forEach(function (demande) {
+        Accounts.createUser(demande);
+    });
 }

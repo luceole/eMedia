@@ -21,6 +21,11 @@ Meteor.publish("userData", function () {
     }
 });*/
 
+Meteor.users.allow({
+    remove: function () {
+        return true
+    }
+});
 
 Meteor.publish('demandes', function (options, searchString) {
     var where = {

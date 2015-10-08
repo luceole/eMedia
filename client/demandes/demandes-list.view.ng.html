@@ -4,19 +4,27 @@
         <h1>Demandes</h1>
 
         <div layout="row" layout-padding="">
-            <md-input-container flex="65">
-                <label>Search</label>
-                <input type="Search" ng-model="search" placeholder="Search">
+            <md-input-container flex="35">
+                <label>Recherche</label>
+                <input type="Search" ng-model="search" placeholder="nom du compte">
             </md-input-container>
+
             <md-select ng-model="orderProperty" flex="35">
-                <md-option value="1">Ascending</md-option>
-                <md-option value="-1">Descending</md-option>
+                <md-option value="1">Croissant</md-option>
+                <md-option value="-1">Décroissant</md-option>
             </md-select>
         </div>
 
-        <ul>
-            <li dir-paginate="demande in demandes | itemsPerPage: perPage" total-items="demandesCount.count" current-page='page'>
-                <p>{{ demande.username }} Nom: {{demande.profile.first_name}} {{demande.profile.last_name}} Courriel : {{demande.emails[0].address}}
+        <md-list>
+            <md-list-item class="md-3-line" dir-paginate="demande in demandes | itemsPerPage: perPage" total-items="demandesCount.count" current-page='page'>
+
+                <div class="md-list-item-text">
+                    <h3>{{ demande.username }} </h3>
+                    <p>{{demande.profile.first_name}} {{demande.profile.last_name}}</p>
+                    <p>Courriel : {{demande.emails[0].address}}</p>
+                </div>
+                <md-divider ng-if="!$last"></md-divider>
+                <div>
                     <md-button ng-click="active(demande)">
                         <md-icon md-font-library="material-icons">check circle</md-icon>
                         <md-tooltip md-delay="1200">Valider cette inscription</md-tooltip>
@@ -25,9 +33,13 @@
                         <md-icon md-font-library="material-icons">delete </md-icon>
                         <md-tooltip md-delay="1200">Effacer cette demande </md-tooltip>
                     </md-button>
-                </p>
-            </li>
-        </ul>
+
+                </div>
+
+            </md-list-item>
+
+        </md-list>
+        <md-divider></md-divider>
         <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
 
         <p>Total number of demandes: {{demandesCount.count}}</p>

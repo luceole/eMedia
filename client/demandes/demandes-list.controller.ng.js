@@ -1,9 +1,9 @@
 'use strict'
 
 angular.module('eMediaApp')
-    .controller('DemandesListCtrl', function ($scope, $meteor) {
+    .controller('DemandesListCtrl', function ($scope, $meteor, $mdDialog) {
         $scope.page = 1
-        $scope.perPage = 10
+        $scope.perPage = 5
         $scope.orderProperty = "1"
         $scope.sort = {
             username: 1
@@ -36,9 +36,24 @@ angular.module('eMediaApp')
         };
 
         $scope.remove = function (demande) {
-            var r = confirm("Supprimer cette demande");
-            if (r)
-                $scope.demandes.remove(demande);
+            // var r = confirm("Supprimer cette demande");
+            var r = false
+
+
+            var confirm = $mdDialog.confirm()
+                .title("Le compte utilisateur " + demande.username + " sera supprimé")
+                .content("Voulez vous effacer cette demande?")
+                .cancel("J'annule")
+                .ok("Je confirme");
+            $mdDialog.show(confirm).then(function () {
+                $scope.status = 'Suppression de la demande';
+                $scope.demandes.remove(demande._id);
+            }, function () {
+                $scope.status = 'Abandon';
+
+            });
+
+
         };
 
         $scope.pageChanged = function (newPage) {
