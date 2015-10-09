@@ -1,14 +1,62 @@
-<div class="main" layout="row">
-    <span flex=""></span>
-    <div>
+<div class="main">
+    <span flex></span>
+    <span ng-show="!currentUser">
+    <md-button class="md-warn" ng-href="/login">Vous devez vous authentifier ! </md-button>
+    </span>
+    <span ng-show="currentUser">
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab>
+            <md-tab-label>
+                <md-icon md-font-library="material-icons">home</md-icon> Accueil
+            </md-tab-label>
+            <md-content class="md-padding">
+                <h3 class="md-headline">Partager simplement vos ressources multi-média ! </h3>
+                <p ng-show="!currentUser.isActif">
+                    Bonjour {{currentUser.username}}, votre compte n'est pas encore activé.
+                </p>
 
-        <h3 class="md-headline">Partager simplement vos ressources multi-média ! </h3>
-        <span ng-show="currentUser.isActif==false">
-        Bonjour {{currentUser.username}}, votre compte n'est pas encore activé.
-        </span>
-        <span ng-hide="currentUser">
-        <md-button class="md-warn" ng-href="/login">Vous devez vous authentifier ! </md-button> 
-          </span>
-    </div>
-    <span flex=""></span>
+    </md-content>
+    </md-tab>
+
+    <md-tab>
+        <md-tab-label>
+            <md-icon md-font-library="material-icons">video_library</md-icon> Vidéos
+        </md-tab-label>
+
+        <md-content class=" md-padding ">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+        </md-content>
+
+    </md-tab>
+    <md-tab>
+        <md-tab-label>
+            <md-icon md-font-library="material-icons">library_music</md-icon> Audios
+        </md-tab-label>
+        <md-content class="md-padding ">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+        </md-content>
+
+    </md-tab>
+    <md-tab>
+        <md-tab-label>
+            <md-icon md-font-library="material-icons">library_books</md-icon> Podcast
+        </md-tab-label>
+        <md-content class="md-padding ">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+        </md-content>
+
+    </md-tab>
+    <md-tab>
+        <md-tab-label>
+            <md-icon md-font-library="material-icons">photo_library</md-icon>
+            Images
+        </md-tab-label>
+        <md-content class="md-padding ">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+        </md-content>
+
+    </md-tab>
+    </md-tabs>
+    </span>
+    <span flex></span>
 </div>
