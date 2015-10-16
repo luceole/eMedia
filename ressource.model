@@ -1,0 +1,24 @@
+ // Structure table Ressource
+            public var id : Int;
+            public var directory : Int;
+            public var up_directory : Int;
+            public var name : String;          // Libelle
+            public var ext : String;           // Extension
+            public var lien : String;          // Lien calculé ou  nom complet d
+u fichier
+            public var lienorig : String;      // Lien origine
+            public var cover : String;      // Lien couverture 
+            public var type : String;          // FLV - MP3 - YOU
+            public var status : Int;           // 1 = Public
+            public var valid  : Bool;          // Reserve pour blocage
+            public var distant  : Bool;        // lien internet ?
+            public var owner : String;         // Propriétaire
+            public var date_create :Date;      // Date de création
+            public var date :Date;             // ??
+            public var description :String ;   // Descriptif de la ressource (ti
+p)
+            public var tags  :String  ;        // Tags Associés
+            public var date_read :Date;        // Dernière lecture
+            public var nb_read :Int;           // Nb de Lecture
+
+

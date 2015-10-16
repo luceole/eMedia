@@ -3,6 +3,7 @@
 angular.module('eMediaApp')
     .controller('LoginCtrl', function ($meteor, $state, $scope) {
 
+
         $scope.viewName = 'Login';
         var vm = this;
         vm.credentials = {
@@ -20,4 +21,15 @@ angular.module('eMediaApp')
                 }
             );
         };
+
+        $scope.gooConnect = function () {
+
+            $meteor.loginWithGoogle({
+                requestPermissions: ['email']
+            }).then(function () {
+                console.log('Login success');
+            }, function (err) {
+                console.log('Login error - ', err);
+            });
+        }
     });

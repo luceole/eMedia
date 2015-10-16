@@ -4,7 +4,7 @@
         <div layout="row" layout-align="space-around center">
             <div>Se connecter avec :</div>
             <md-button ng-disabled="true"> Twitter</md-button>
-            <md-button ng-disabled="true">Google</md-button>
+            <md-button ng-click="gooConnect()">Google</md-button>
         </div>
         <div ng-show="lc.error" class="md-warn">
             <small>{{ lc.error }}</small>
