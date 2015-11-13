@@ -21,13 +21,20 @@ angular.module('eMediaApp')
                 }
             );
         };
+        $scope.twitConnect = function () {
 
+            $meteor.loginWithTwitter().then(function () {
+                $state.go('main');
+            }, function (err) {
+                console.log('Login error - ', err);
+            })
+        }
         $scope.gooConnect = function () {
 
             $meteor.loginWithGoogle({
                 requestPermissions: ['email']
             }).then(function () {
-                console.log('Login success');
+                $state.go('main');
             }, function (err) {
                 console.log('Login error - ', err);
             });

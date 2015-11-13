@@ -3,7 +3,7 @@
     <md-whiteframe layout="column" flex="50">
         <div layout="row" layout-align="space-around center">
             <div>Se connecter avec :</div>
-            <md-button ng-disabled="true"> Twitter</md-button>
+            <md-button ng-click="twitConnect()"> Twitter</md-button>
             <md-button ng-click="gooConnect()">Google</md-button>
         </div>
         <div ng-show="lc.error" class="md-warn">
